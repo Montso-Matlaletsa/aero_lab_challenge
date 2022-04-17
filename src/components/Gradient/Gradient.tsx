@@ -5,7 +5,7 @@ import colors from '../../utils/constants/colors';
 
 interface GradientProps {
   children: ReactChild;
-  style: ViewStyle;
+  style?: ViewStyle;
 }
 const Gradient: FC<GradientProps> = ({children, style}) => {
   return (
