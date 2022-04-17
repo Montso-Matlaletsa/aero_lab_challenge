@@ -70,6 +70,8 @@ const WalkThroughCard: FC<CardProps> = ({walkThrough}) => {
           paddingLeft: 20,
           paddingRight: 20,
           textAlign: 'center',
+          fontSize: fonts.xs,
+          fontWeight: '600',
         },
       }),
     [],

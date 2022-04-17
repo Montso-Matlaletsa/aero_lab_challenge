@@ -35,7 +35,10 @@ export const Home = () => {
     [],
   );
   return (
-    <ScrollView>
+    <ScrollView
+      scrollEnabled
+      scrollEventThrottle={16}
+      showsVerticalScrollIndicator={false}>
       <MainPage />
       <WalkThrough />
     </ScrollView>
