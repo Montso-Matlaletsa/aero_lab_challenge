@@ -1,13 +1,26 @@
 import {View, Text, Image, StyleSheet} from 'react-native';
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import colors from '../../utils/constants/colors';
 import fonts from '../../utils/constants/fonts';
 import Gradient from '../Gradient';
 import GradientButton from '../GradientButton';
 import GradientText from '../GradientText';
 import WalkThrough from '../WalkThrough';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import {RootNavigation, RootStackParams} from '../../@types/types';
 
 const MainPage = () => {
+  const {navigate} =
+    useNavigation<
+      NativeStackNavigationProp<RootNavigation, RootStackParams.HOME>
+    >();
+
+  const RouteToProducts = useCallback(
+    () => navigate(RootStackParams.PRODUCTS),
+    [navigate],
+  );
+
   const styles = useMemo(
     () =>
       StyleSheet.create({
@@ -126,6 +139,7 @@ const MainPage = () => {
         style={styles.btn}
         label={'View All Products'}
         icon={require('../../assets/Vector2.png')}
+        onPress={RouteToProducts}
       />
     </View>
   );

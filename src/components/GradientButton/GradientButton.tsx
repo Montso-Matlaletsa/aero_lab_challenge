@@ -16,6 +16,7 @@ interface GradientButtonProps {
   label: string;
   secondLabel?: string;
   icon: ImageProps;
+  onPress?: () => void;
 }
 
 const GradientButton: FC<GradientButtonProps> = ({
@@ -23,6 +24,7 @@ const GradientButton: FC<GradientButtonProps> = ({
   label,
   secondLabel,
   icon,
+  onPress,
 }) => {
   const styles = useMemo(
     () =>
@@ -54,7 +56,7 @@ const GradientButton: FC<GradientButtonProps> = ({
     [],
   );
   return (
-    <TouchableOpacity style={style}>
+    <TouchableOpacity style={style} onPress={onPress}>
       <Gradient style={styles.container}>
         <View style={styles.buttonElementsContainer}>
           <Text style={styles.label}>{label}</Text>
