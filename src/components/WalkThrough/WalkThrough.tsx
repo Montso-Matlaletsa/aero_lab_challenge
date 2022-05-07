@@ -1,12 +1,10 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import React, {useMemo} from 'react';
 import colors from '../../utils/constants/colors';
-import fonts from '../../utils/constants/fonts';
 import Gradient from '../Gradient';
-import GradientButton from '../GradientButton';
-import GradientText from '../GradientText';
 import {walkthroughs} from '../../utils/constants/walkthroughs';
 import WalkThroughCard from '../WalkThroughCard';
+import {safearea} from '../../utils/constants/canstants';
 
 const WalkThrough = () => {
   const styles = useMemo(
@@ -15,6 +13,7 @@ const WalkThrough = () => {
         container: {
           flex: 1,
           width: '100%',
+          height: '100%',
         },
         image: {
           width: '100%',
@@ -63,7 +62,7 @@ const WalkThrough = () => {
           opacity: 0.8,
         },
       }),
-    [],
+    [safearea],
   );
 
   return (

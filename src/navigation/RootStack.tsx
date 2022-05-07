@@ -1,8 +1,9 @@
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {RootNavigation, RootStackParams} from '../@types/types';
+import {RootNavigation} from '../@types/types';
 import Home from '../screens/Home';
 import Products from '../screens/Products';
+import {RootStackParams} from '../utils/constants/enums';
 
 const Stack = createNativeStackNavigator<RootNavigation>();
 

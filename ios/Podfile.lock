@@ -362,6 +362,8 @@ PODS:
     - React-RCTImage
   - RNTextGradientView (0.1.7):
     - React
+  - RNVectorIcons (9.1.0):
+    - React-Core
   - SocketRocket (0.6.0)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
@@ -427,6 +429,7 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNTextGradientView (from `../node_modules/react-native-text-gradient`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -518,6 +521,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNTextGradientView:
     :path: "../node_modules/react-native-text-gradient"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -570,6 +575,7 @@ SPEC CHECKSUMS:
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNScreens: 40a2cb40a02a609938137a1e0acfbf8fc9eebf19
   RNTextGradientView: 3eb4744303f801546fad35ac47a53cc82257cb25
+  RNVectorIcons: 7923e585eaeb139b9f4531d25a125a1500162a0b
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   Yoga: 17cd9a50243093b547c1e539c749928dd68152da
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

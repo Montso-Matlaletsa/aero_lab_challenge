@@ -1,38 +1,27 @@
-import {StyleSheet, ScrollView} from 'react-native';
-import React, {ReactChild, useCallback, useMemo} from 'react';
+import {ScrollView} from 'react-native';
+import React from 'react';
 import WalkThrough from '../../components/WalkThrough';
 import MainPage from '../../components/MainPage';
-import {useNavigation} from '@react-navigation/native';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootNavigation, RootStackParams} from '../../@types/types';
+import {ReactNode} from 'react';
+import {Component} from 'react';
+
+interface homePages {
+  component: ReactNode;
+}
 
 export const Home = () => {
-  const {navigate} =
-    useNavigation<
-      NativeStackNavigationProp<RootNavigation, RootStackParams.HOME>
-    >();
+  const pages = [MainPage, WalkThrough];
 
-  const RouteToProducts = useCallback(
-    () => navigate(RootStackParams.PRODUCTS),
-    [navigate],
-  );
-
-  const styles = useMemo(
-    () =>
-      StyleSheet.create({
-        container: {
-          flex: 1,
-        },
-      }),
-    [],
-  );
   return (
     <ScrollView
       scrollEnabled
       scrollEventThrottle={16}
-      showsVerticalScrollIndicator={false}>
-      <MainPage />
-      <WalkThrough />
+      showsVerticalScrollIndicator={false}
+      contentContainerStyle={{flexGrow: 1}}
+      pagingEnabled>
+      {pages.map(Page => (
+        <Page />
+      ))}
     </ScrollView>
   );
 };

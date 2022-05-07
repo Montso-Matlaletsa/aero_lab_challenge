@@ -4,6 +4,7 @@ import colors from '../../utils/constants/colors';
 import fonts from '../../utils/constants/fonts';
 import Gradient from '../Gradient';
 import GradientText from '../GradientText';
+import {safearea} from '../../utils/constants/canstants';
 
 export type WalkThrough = {
   id: number;
@@ -74,7 +75,7 @@ const WalkThroughCard: FC<CardProps> = ({walkThrough}) => {
           fontWeight: '600',
         },
       }),
-    [],
+    [safearea],
   );
 
   return (

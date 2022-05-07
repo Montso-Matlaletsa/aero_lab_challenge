@@ -5,10 +5,11 @@ import fonts from '../../utils/constants/fonts';
 import Gradient from '../Gradient';
 import GradientButton from '../GradientButton';
 import GradientText from '../GradientText';
-import WalkThrough from '../WalkThrough';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootNavigation, RootStackParams} from '../../@types/types';
+import {RootNavigation} from '../../@types/types';
+import {RootStackParams} from '../../utils/constants/enums';
+import {PAGE_HEIGHT, safearea} from '../../utils/constants/canstants';
 
 const MainPage = () => {
   const {navigate} =
@@ -24,13 +25,12 @@ const MainPage = () => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
-        container: {
-          flex: 1,
-        },
         page1: {
           marginLeft: 20,
           marginRight: 20,
           marginBottom: 40,
+
+          flex: 1,
         },
         topBar: {
           flexDirection: 'row',
@@ -96,9 +96,10 @@ const MainPage = () => {
         btn: {
           width: '100%',
           marginTop: 100,
+          bottom: 0,
         },
       }),
-    [],
+    [safearea],
   );
 
   return (
