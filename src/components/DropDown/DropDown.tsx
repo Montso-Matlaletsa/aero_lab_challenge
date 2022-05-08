@@ -10,17 +10,30 @@ interface IDropDownProps {
 }
 
 const DropDown: FC<IDropDownProps> = ({data}) => {
-  const style = useMemo(
+  const styles = useMemo(
     () =>
       StyleSheet.create({
-        container: {
-          borderColor: colors.GREY,
+        dropdown1BtnStyle: {
+          width: '100%',
+          height: 50,
+          borderRadius: 15,
           borderWidth: 1,
-          borderRadius: 20,
-          alignItems: 'center',
-          marginTop: 10,
+          borderColor: colors.GREY,
+          marginTop: 15,
+          backgroundColor: colors.WHITE,
         },
-        dropDown: {},
+        dropdown1BtnTxtStyle: {
+          color: colors.GREY,
+          textAlign: 'left',
+          padding: 10,
+        },
+        dropdown1DropdownStyle: {
+          backgroundColor: colors.WHITE,
+          marginTop: 5,
+          borderRadius: 5,
+        },
+        dropdown1RowStyle: {borderBottomColor: '#C5C5C5'},
+        dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
       }),
     [safearea],
   );
@@ -58,22 +71,3 @@ const DropDown: FC<IDropDownProps> = ({data}) => {
 };
 
 export default DropDown;
-
-const styles = StyleSheet.create({
-  dropdown1BtnStyle: {
-    width: '100%',
-    height: 50,
-    borderRadius: 15,
-    borderWidth: 1,
-    borderColor: colors.GREY,
-    marginTop: 15,
-  },
-  dropdown1BtnTxtStyle: {color: colors.GREY, textAlign: 'left', padding: 10},
-  dropdown1DropdownStyle: {
-    backgroundColor: colors.WHITE,
-    marginTop: 5,
-    borderRadius: 5,
-  },
-  dropdown1RowStyle: {borderBottomColor: '#C5C5C5'},
-  dropdown1RowTxtStyle: {color: '#444', textAlign: 'left'},
-});

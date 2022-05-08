@@ -97,6 +97,10 @@ const MainPage = () => {
           width: '100%',
           marginTop: 100,
           bottom: 0,
+          height: 64,
+        },
+        textLabelStyle: {
+          textTransform: 'uppercase',
         },
       }),
     [safearea],
@@ -141,6 +145,9 @@ const MainPage = () => {
         label={'View All Products'}
         icon={require('../../assets/Vector2.png')}
         onPress={RouteToProducts}
+        height={64}
+        //@ts-ignore
+        textLabelStyle={styles.textLabelStyle}
       />
     </View>
   );

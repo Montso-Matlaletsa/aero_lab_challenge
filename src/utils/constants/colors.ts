@@ -4,7 +4,8 @@ const colors ={
     RED :'#FF80FF',
     BLACK_TEXT: '#252F3D',
     GREY: '#7C899C',
-    WHITE: '#FFFFFF'
+    WHITE: '#FFFFFF',
+    NEUTRAL: '#DAE4F2'
 }
 
 export default colors
