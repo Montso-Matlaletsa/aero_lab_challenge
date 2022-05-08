@@ -15,9 +15,13 @@ import GradientButton from '../../components/GradientButton';
 import {FlatList} from 'react-native';
 import {mockProducts} from '../../@types/types';
 import {Fragment} from 'react';
+import useApp from '../../context/AppContext/hook';
+import {useEffect} from 'react';
 
 const Products = () => {
   const dropdownItems = ['All Products', 'Electronics', 'Phones', 'Computers'];
+  const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
+  const {products} = useApp();
 
   const styles = useMemo(
     () =>
@@ -52,7 +56,6 @@ const Products = () => {
     [safearea],
   );
 
-  const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -73,7 +76,7 @@ const Products = () => {
         </ScrollView>
       </View>
       <FlatList
-        data={mockProducts}
+        data={products}
         renderItem={({item}) => (
           <Fragment>
             <Product product={item} />
@@ -81,7 +84,7 @@ const Products = () => {
               label={'Redeem for'}
               height={64}
               icon={require('../../assets/logo/logo2.png')}
-              secondLabel={item.cost}
+              secondLabel={item.cost.toString()}
               style={styles.redeemButton}
             />
           </Fragment>

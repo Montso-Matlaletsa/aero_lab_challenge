@@ -5,7 +5,7 @@ import {safearea} from '../../utils/constants/canstants';
 import colors from '../../utils/constants/colors';
 import {Image} from 'react-native';
 import fonts from '../../utils/constants/fonts';
-import {product} from '../../@types/types';
+import {Product as product} from '../../@types/types';
 import {FC} from 'react';
 interface IProduct {
   product: product;

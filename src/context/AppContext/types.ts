@@ -1,10 +1,14 @@
+import { Product } from "../../@types/types";
+
 export interface Context {
     state:{
-        user: User | undefined
+        user: User | undefined,
+        products: Product[]
     };
 
     actions:{
-        onGetUser: () => Promise<void>
+        onGetUser: () => Promise<void>,
+        onGetProducts: () => Promise<void>
     }
 }
 
@@ -14,4 +18,4 @@ export interface User{
     points: number;
     redeemHistory: string[]
     createDate: Date
-  }
+}

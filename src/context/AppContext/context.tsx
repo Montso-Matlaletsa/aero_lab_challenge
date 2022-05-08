@@ -6,11 +6,13 @@ import {useSWRConfig} from 'swr';
 import api from './api';
 import {token} from '../../utils/environment';
 import React, {useEffect} from 'react';
+import {Product} from '../../@types/types';
 
 const AppContext = createContext({} as Context);
 
 const AppProvider: FC = ({children}) => {
   const [user, setUser] = useState<User | undefined>(undefined);
+  const [products, setProducts] = useState<Product[]>([]);
   const {cache} = useSWRConfig();
 
   const onGetUser = async (): Promise<void> => {
@@ -21,7 +23,22 @@ const AppProvider: FC = ({children}) => {
     }
   };
 
+  const onGetProducts = async (): Promise<void> => {
+    const res = await api.getProducts(token);
+    if (res) {
+      //@ts-ignore
+      setProducts(res);
+    }
+  };
+
   useEffect(() => {
+    api.getProducts(token).then(res => {
+      if (res) {
+        //@ts-ignore
+        setProducts(res);
+      }
+    });
+
     api.getUser(token).then(res => {
       if (res) {
         //@ts-ignore
@@ -31,10 +48,12 @@ const AppProvider: FC = ({children}) => {
   }, []);
   const state = {
     user,
+    products,
   };
 
   const actions = {
     onGetUser,
+    onGetProducts,
   };
   return (
     <AppContext.Provider value={{state, actions}}>

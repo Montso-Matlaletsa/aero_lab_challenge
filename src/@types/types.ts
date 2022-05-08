@@ -4,7 +4,7 @@ export type RootNavigation = {
     Products: undefined;
 }
 
-export type product={
+export type Product={
     _id: string;
     name: string;
     category: string;
@@ -12,7 +12,7 @@ export type product={
     img: {url: string, hdUrl: string}
 }
 
-export const mockProducts:product[]=
+export const mockProducts:Product[]=
 [
     {
       _id: "5a033eeb364bf301523e9b92",
