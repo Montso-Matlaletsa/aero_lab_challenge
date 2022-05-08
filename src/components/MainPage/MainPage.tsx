@@ -10,6 +10,10 @@ import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootNavigation} from '../../@types/types';
 import {RootStackParams} from '../../utils/constants/enums';
 import {PAGE_HEIGHT, safearea} from '../../utils/constants/canstants';
+import useApp from '../../context/AppContext/hook';
+import {useEffect} from 'react';
+import {useState} from 'react';
+import {User} from '../../context/AppContext/types';
 
 const MainPage = () => {
   const {navigate} =
@@ -21,7 +25,7 @@ const MainPage = () => {
     () => navigate(RootStackParams.PRODUCTS),
     [navigate],
   );
-
+  const {user, onGetUser} = useApp();
   const styles = useMemo(
     () =>
       StyleSheet.create({
@@ -124,7 +128,7 @@ const MainPage = () => {
             />
           </Gradient>
 
-          <GradientText style={styles.coins}>1000</GradientText>
+          <GradientText style={styles.coins}>{user?.points}</GradientText>
           <Image
             source={require('../../assets/Vector.png')}
             style={styles.img}

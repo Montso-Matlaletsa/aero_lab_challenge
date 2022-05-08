@@ -22,7 +22,8 @@
     "react-native-screens": "^3.13.1",
     "react-native-select-dropdown": "^1.13.0",
     "react-native-text-gradient": "^0.1.7",
-    "react-native-vector-icons": "^9.1.0"
+    "react-native-vector-icons": "^9.1.0",
+    "swr": "^1.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

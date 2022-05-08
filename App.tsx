@@ -4,12 +4,15 @@ import {globalStyle} from './src/utils/styles';
 import {NavigationContainer} from '@react-navigation/native';
 import {RootStack} from './src/navigation/RootStack';
 import {SafeAreaView} from 'react-native-safe-area-context';
+import {AppProvider} from './src/context/AppContext/context';
 
 const App = () => {
   return (
     <NavigationContainer>
       <View style={globalStyle.container}>
-        <RootStack />
+        <AppProvider>
+          <RootStack />
+        </AppProvider>
       </View>
     </NavigationContainer>
   );
