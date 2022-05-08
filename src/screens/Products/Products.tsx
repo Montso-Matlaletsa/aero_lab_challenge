@@ -12,6 +12,9 @@ import {ScrollView} from 'react-native';
 import Filter from '../../components/Filter/Filter';
 import Product from '../../components/Product/Product';
 import GradientButton from '../../components/GradientButton';
+import {FlatList} from 'react-native';
+import {mockProducts} from '../../@types/types';
+import {Fragment} from 'react';
 
 const Products = () => {
   const dropdownItems = ['All Products', 'Electronics', 'Phones', 'Computers'];
@@ -43,6 +46,7 @@ const Products = () => {
         },
         redeemButton: {
           marginTop: 20,
+          marginBottom: 30,
         },
       }),
     [safearea],
@@ -58,21 +62,30 @@ const Products = () => {
 
       <DropDown data={dropdownItems} />
 
-      <ScrollView
-        horizontal
-        style={styles.scrollStyle}
-        showsHorizontalScrollIndicator={false}>
-        {filters.map((filter, index) => (
-          <Filter index={index} text={filter} />
-        ))}
-      </ScrollView>
-      <Product />
-      <GradientButton
-        label={'Redeem for'}
-        height={64}
-        icon={require('../../assets/logo/logo2.png')}
-        secondLabel="12.500"
-        style={styles.redeemButton}
+      <View>
+        <ScrollView
+          horizontal
+          style={styles.scrollStyle}
+          showsHorizontalScrollIndicator={false}>
+          {filters.map((filter, index) => (
+            <Filter index={index} text={filter} />
+          ))}
+        </ScrollView>
+      </View>
+      <FlatList
+        data={mockProducts}
+        renderItem={({item}) => (
+          <Fragment>
+            <Product product={item} />
+            <GradientButton
+              label={'Redeem for'}
+              height={64}
+              icon={require('../../assets/logo/logo2.png')}
+              secondLabel={item.cost}
+              style={styles.redeemButton}
+            />
+          </Fragment>
+        )}
       />
     </View>
   );

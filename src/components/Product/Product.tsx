@@ -5,8 +5,12 @@ import {safearea} from '../../utils/constants/canstants';
 import colors from '../../utils/constants/colors';
 import {Image} from 'react-native';
 import fonts from '../../utils/constants/fonts';
-
-const Product = () => {
+import {product} from '../../@types/types';
+import {FC} from 'react';
+interface IProduct {
+  product: product;
+}
+const Product: FC<IProduct> = ({product}) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
@@ -54,14 +58,10 @@ const Product = () => {
   );
   return (
     <View style={styles.container}>
-      <Image
-        source={require('../../assets/products/Alienware13-x2.png')}
-        style={styles.imageStyle}
-      />
-
+      <Image source={{uri: product.img.url}} style={styles.imageStyle} />
       <View style={styles.productDescription}>
-        <Text style={styles.productName}>Chromecast 3</Text>
-        <Text style={styles.productCategory}>Smart home</Text>
+        <Text style={styles.productName}>{product.name}</Text>
+        <Text style={styles.productCategory}>{product.category}</Text>
       </View>
     </View>
   );
