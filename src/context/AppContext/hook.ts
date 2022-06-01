@@ -4,14 +4,17 @@ import {AppContext } from './context'
 const useApp = ()=>{
     const { state:{
         user, 
-        products
-    }, actions:{onGetUser, onGetProducts} } = useContext(AppContext)
+        products,
+        categories
+    }, actions:{onGetUser, onGetProducts, onGetCategories} } = useContext(AppContext)
 
     return{
         user, 
         products,
+        categories,
         onGetUser,
-        onGetProducts
+        onGetProducts,
+        onGetCategories
     }
 }
 

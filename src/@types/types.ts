@@ -12,6 +12,10 @@ export type Product={
     img: {url: string, hdUrl: string}
 }
 
+export type Category={
+  name: string
+}
+
 export const mockProducts:Product[]=
 [
     {

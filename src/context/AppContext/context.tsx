@@ -6,17 +6,18 @@ import {useSWRConfig} from 'swr';
 import api from './api';
 import {token} from '../../utils/environment';
 import React, {useEffect} from 'react';
-import {Product} from '../../@types/types';
+import {Category, Product} from '../../@types/types';
 
 const AppContext = createContext({} as Context);
 
 const AppProvider: FC = ({children}) => {
   const [user, setUser] = useState<User | undefined>(undefined);
   const [products, setProducts] = useState<Product[]>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const {cache} = useSWRConfig();
 
   const onGetUser = async (): Promise<void> => {
-    const res = await api.getUser(token);
+    const res = await api.getUser();
     if (res) {
       //@ts-ignore
       setUser(res);
@@ -24,22 +25,30 @@ const AppProvider: FC = ({children}) => {
   };
 
   const onGetProducts = async (): Promise<void> => {
-    const res = await api.getProducts(token);
+    const res = await api.getProducts();
     if (res) {
       //@ts-ignore
       setProducts(res);
     }
   };
 
+  const onGetCategories = () => {
+    const categories = products.filter(product => product.category);
+    setCategories(categories);
+    console.log(categories);
+  };
+
   useEffect(() => {
-    api.getProducts(token).then(res => {
+    api.getProducts().then(res => {
       if (res) {
         //@ts-ignore
         setProducts(res);
       }
     });
 
-    api.getUser(token).then(res => {
+    onGetCategories;
+
+    api.getUser().then(res => {
       if (res) {
         //@ts-ignore
         setUser(res);
@@ -49,11 +58,13 @@ const AppProvider: FC = ({children}) => {
   const state = {
     user,
     products,
+    categories,
   };
 
   const actions = {
     onGetUser,
     onGetProducts,
+    onGetCategories,
   };
   return (
     <AppContext.Provider value={{state, actions}}>
