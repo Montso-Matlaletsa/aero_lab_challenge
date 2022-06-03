@@ -4,9 +4,10 @@ import SelectDropdown from 'react-native-select-dropdown';
 import colors from '../../utils/constants/colors';
 import {safearea} from '../../utils/constants/canstants';
 import {FontAwesome} from '@expo/vector-icons';
+import {Category} from '../../@types/types';
 
 interface IDropDownProps {
-  data: string[];
+  data: Category[];
 }
 
 const DropDown: FC<IDropDownProps> = ({data}) => {

@@ -149,7 +149,7 @@ const MainPage = () => {
         label={'View All Products'}
         icon={require('../../assets/Vector2.png')}
         onPress={RouteToProducts}
-        height={64}
+        height={50}
         //@ts-ignore
         textLabelStyle={styles.textLabelStyle}
       />

@@ -1,19 +1,15 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useMemo} from 'react';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {safearea} from '../../utils/constants/canstants';
 import fonts from '../../utils/constants/fonts';
 import GradientText from '../../components/GradientText';
 import colors from '../../utils/constants/colors';
-import SelectDropdown from 'react-native-select-dropdown';
-import {Ionicons} from '@expo/vector-icons';
 import DropDown from '../../components/DropDown';
 import {ScrollView} from 'react-native';
 import Filter from '../../components/Filter/Filter';
 import Product from '../../components/Product/Product';
 import GradientButton from '../../components/GradientButton';
 import {FlatList} from 'react-native';
-import {mockProducts} from '../../@types/types';
 import {Fragment} from 'react';
 import useApp from '../../context/AppContext/hook';
 import {useEffect} from 'react';
@@ -21,7 +17,7 @@ import {useEffect} from 'react';
 const Products = () => {
   const dropdownItems = ['All Products', 'Electronics', 'Phones', 'Computers'];
   const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
-  const {products} = useApp();
+  const {products, categories, onGetCategories} = useApp();
 
   const styles = useMemo(
     () =>
@@ -56,6 +52,11 @@ const Products = () => {
     [safearea],
   );
 
+  useEffect(() => {
+    onGetCategories;
+    console.log(categories);
+  });
+
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -82,7 +83,7 @@ const Products = () => {
             <Product product={item} />
             <GradientButton
               label={'Redeem for'}
-              height={64}
+              height={50}
               icon={require('../../assets/logo/logo2.png')}
               secondLabel={item.cost.toString()}
               style={styles.redeemButton}

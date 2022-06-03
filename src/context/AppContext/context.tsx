@@ -46,7 +46,9 @@ const AppProvider: FC = ({children}) => {
       }
     });
 
-    onGetCategories;
+    const categories = products.filter(product => product.category);
+    setCategories(categories);
+    console.log('categories: ', categories);
 
     api.getUser().then(res => {
       if (res) {
