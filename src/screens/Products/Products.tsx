@@ -15,7 +15,6 @@ import useApp from '../../context/AppContext/hook';
 import {useEffect} from 'react';
 
 const Products = () => {
-  const dropdownItems = ['All Products', 'Electronics', 'Phones', 'Computers'];
   const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
   const {products, categories, onGetCategories} = useApp();
 
@@ -52,11 +51,6 @@ const Products = () => {
     [safearea],
   );
 
-  useEffect(() => {
-    onGetCategories;
-    console.log(categories);
-  });
-
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
@@ -64,7 +58,7 @@ const Products = () => {
         <Text style={[styles.title, {color: colors.BLACK_TEXT}]}>Products</Text>
       </View>
 
-      <DropDown data={dropdownItems} />
+      <DropDown categories={categories} />
 
       <View>
         <ScrollView

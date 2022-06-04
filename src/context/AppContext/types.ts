@@ -1,15 +1,15 @@
-import { Category, Product } from "../../@types/types";
+import { Product } from "../../@types/types";
 
 export interface Context {
     state:{
         user: User | undefined,
         products: Product[],
-        categories: Category[]
+        categories: string[]
     };
 
     actions:{
-        onGetUser: () => Promise<void>,
-        onGetProducts: () => Promise<void>,
+        onGetUser: () => void,
+        onGetProducts: () => void,
         onGetCategories: () => void
     }
 }

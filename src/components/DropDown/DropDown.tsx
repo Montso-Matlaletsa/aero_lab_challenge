@@ -4,13 +4,12 @@ import SelectDropdown from 'react-native-select-dropdown';
 import colors from '../../utils/constants/colors';
 import {safearea} from '../../utils/constants/canstants';
 import {FontAwesome} from '@expo/vector-icons';
-import {Category} from '../../@types/types';
 
 interface IDropDownProps {
-  data: Category[];
+  categories: string[];
 }
 
-const DropDown: FC<IDropDownProps> = ({data}) => {
+const DropDown: FC<IDropDownProps> = ({categories}) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
@@ -41,7 +40,7 @@ const DropDown: FC<IDropDownProps> = ({data}) => {
 
   return (
     <SelectDropdown
-      data={data}
+      data={categories}
       onSelect={(selectedItem, index) => {
         console.log(selectedItem, index);
       }}
