@@ -43,6 +43,7 @@ const AppProvider: FC = ({children}) => {
   useEffect(() => {
     onGetProducts();
     onGetUser();
+    onGetCategories();
   }, []);
 
   const state = {
