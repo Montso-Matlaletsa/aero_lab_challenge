@@ -36,14 +36,17 @@ const AppProvider: FC = ({children}) => {
   };
 
   const onGetCategories = () => {
-    const newCategories = new Set(products.map(product => product.category));
-    setCategories(Array.from(newCategories));
+    const categories = new Set(products.map(product => product.category));
+    const newCategories = Array.from(categories);
+    newCategories[0] = 'All Products';
+    setCategories(newCategories);
   };
 
   useEffect(() => {
     onGetProducts();
     onGetUser();
     onGetCategories();
+    console.log('categories: ', categories);
   }, []);
 
   const state = {

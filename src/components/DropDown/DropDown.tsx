@@ -45,10 +45,10 @@ const DropDown: FC<IDropDownProps> = ({categories}) => {
         console.log(selectedItem, index);
       }}
       defaultValueByIndex={0}
-      buttonTextAfterSelection={(selectedItem, index) => {
+      buttonTextAfterSelection={(selectedItem, _index) => {
         return selectedItem;
       }}
-      rowTextForSelection={(item, index) => {
+      rowTextForSelection={(item, _index) => {
         return item;
       }}
       buttonStyle={styles.dropdown1BtnStyle}
