@@ -43,14 +43,12 @@ const AppProvider: FC = ({children}) => {
       setCategories(newCategories);
       return;
     }
-    setCategories(['All Products']);
   };
 
   useEffect(() => {
     onGetProducts();
     onGetUser();
     onGetCategories();
-    console.log(products.length);
   }, []);
 
   const state = {

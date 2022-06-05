@@ -47,10 +47,6 @@ const Products = () => {
           flexGrow: 0,
           marginBottom: 40,
         },
-        redeemButton: {
-          marginTop: 20,
-          marginBottom: 30,
-        },
       }),
     [safearea],
   );
@@ -79,14 +75,13 @@ const Products = () => {
         data={products}
         renderItem={({item}) => (
           <Fragment>
-            <Product product={item} key={item._id} />
-            <GradientButton
-              label={'Redeem for'}
-              height={50}
-              icon={require('../../assets/logo/logo2.png')}
-              secondLabel={item.cost.toString()}
-              style={styles.redeemButton}
-            />
+            {category !== 'All Products' ? (
+              item.category === category && (
+                <Product product={item} key={item._id} />
+              )
+            ) : (
+              <Product product={item} key={item._id} />
+            )}
           </Fragment>
         )}
       />
