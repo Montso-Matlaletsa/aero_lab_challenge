@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {safearea} from '../../utils/constants/canstants';
 import fonts from '../../utils/constants/fonts';
 import GradientText from '../../components/GradientText';
@@ -12,14 +12,14 @@ import GradientButton from '../../components/GradientButton';
 import {FlatList} from 'react-native';
 import {Fragment} from 'react';
 import useApp from '../../context/AppContext/hook';
-import {useEffect} from 'react';
 
 const Products = () => {
   const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
-  const {products, categories, onGetCategories} = useApp();
+  const {products, categories} = useApp();
+  const [category, setCategory] = useState<string>('All Products');
 
-  const selectCategory = useCallback((category: string) => {
-    console.log(category);
+  const selectCategory = useCallback((newCategory: string) => {
+    setCategory(newCategory);
   }, []);
 
   const styles = useMemo(
@@ -55,6 +55,7 @@ const Products = () => {
     [safearea],
   );
 
+  useEffect(() => {});
   return (
     <View style={styles.container}>
       <View style={styles.titleContainer}>
