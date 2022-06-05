@@ -1,4 +1,3 @@
-import { resolvePlugin } from "@babel/core";
 import { Product } from "../../@types/types";
 import endpoints from "../../utils/endpoints";
 import { token } from "../../utils/environment";

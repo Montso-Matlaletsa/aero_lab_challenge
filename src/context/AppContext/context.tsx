@@ -2,10 +2,11 @@ import {FC} from 'react';
 import {useState} from 'react';
 import {createContext} from 'react';
 import {Context, User} from './types';
-import {useSWRConfig} from 'swr';
+import useSWR, {useSWRConfig} from 'swr';
 import api from './api';
 import React, {useEffect} from 'react';
 import {Product} from '../../@types/types';
+import endpoints from '../../utils/endpoints';
 
 const AppContext = createContext({} as Context);
 
@@ -14,7 +15,6 @@ const AppProvider: FC = ({children}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<string[]>([]);
   const {cache} = useSWRConfig();
-
   const onGetUser = async (): Promise<void> => {
     try {
       const res = await api.getUser();
@@ -36,17 +36,18 @@ const AppProvider: FC = ({children}) => {
   };
 
   const onGetCategories = () => {
-    const categories = new Set(products.map(product => product.category));
-    const newCategories = Array.from(categories);
-    newCategories[0] = 'All Products';
-    setCategories(newCategories);
+    if (products.length > 0) {
+      const categories = new Set(products.map(product => product.category));
+      const newCategories = Array.from(categories);
+      newCategories[0] = 'All Products';
+      setCategories(newCategories);
+    }
   };
 
   useEffect(() => {
     onGetProducts();
     onGetUser();
     onGetCategories();
-    console.log('categories: ', categories);
   }, []);
 
   const state = {

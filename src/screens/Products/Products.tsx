@@ -74,7 +74,7 @@ const Products = () => {
         data={products}
         renderItem={({item}) => (
           <Fragment>
-            <Product product={item} />
+            <Product product={item} key={item._id} />
             <GradientButton
               label={'Redeem for'}
               height={50}
