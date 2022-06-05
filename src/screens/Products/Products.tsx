@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useMemo} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {safearea} from '../../utils/constants/canstants';
 import fonts from '../../utils/constants/fonts';
 import GradientText from '../../components/GradientText';
@@ -17,6 +17,10 @@ import {useEffect} from 'react';
 const Products = () => {
   const filters = ['Most recent', 'Lowest Price', 'Highest Price'];
   const {products, categories, onGetCategories} = useApp();
+
+  const selectCategory = useCallback((category: string) => {
+    console.log(category);
+  }, []);
 
   const styles = useMemo(
     () =>
@@ -58,7 +62,7 @@ const Products = () => {
         <Text style={[styles.title, {color: colors.BLACK_TEXT}]}>Products</Text>
       </View>
 
-      <DropDown categories={categories} />
+      <DropDown categories={categories} selectCategory={selectCategory} />
 
       <View>
         <ScrollView

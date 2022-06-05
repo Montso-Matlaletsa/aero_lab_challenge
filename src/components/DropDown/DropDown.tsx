@@ -7,9 +7,10 @@ import {FontAwesome} from '@expo/vector-icons';
 
 interface IDropDownProps {
   categories: string[];
+  selectCategory: (category: string) => void;
 }
 
-const DropDown: FC<IDropDownProps> = ({categories}) => {
+const DropDown: FC<IDropDownProps> = ({categories, selectCategory}) => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
@@ -41,8 +42,8 @@ const DropDown: FC<IDropDownProps> = ({categories}) => {
   return (
     <SelectDropdown
       data={categories}
-      onSelect={(selectedItem, index) => {
-        console.log(selectedItem, index);
+      onSelect={(selectedItem, _index) => {
+        selectCategory(selectedItem);
       }}
       defaultValueByIndex={0}
       buttonTextAfterSelection={(selectedItem, _index) => {
