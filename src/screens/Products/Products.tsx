@@ -18,9 +18,12 @@ const Products = () => {
   const {products, categories} = useApp();
   const [category, setCategory] = useState<string>('All Products');
 
-  const selectCategory = useCallback((newCategory: string) => {
-    setCategory(newCategory);
-  }, []);
+  const selectCategory = useCallback(
+    (newCategory: string) => {
+      setCategory(newCategory);
+    },
+    [category],
+  );
 
   const styles = useMemo(
     () =>
